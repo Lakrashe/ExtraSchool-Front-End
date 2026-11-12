@@ -1,0 +1,39 @@
+body{
+    margin: 0;
+    background: #f7f9fc;
+    font-family: Arial, sans-serif;
+    color: #172b4d;
+}
+.header{
+    background: white;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 18px 0;
+}
+
+.container-header{
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.title-nav{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 15px;
+}
+
+.icon-nav{
+    font-size: 30px;
+}
+
+.btn{
+    font: inherit;
+    font-size: 15px;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px ;
+    background: #2563eb;
+    color: #fff;
+}

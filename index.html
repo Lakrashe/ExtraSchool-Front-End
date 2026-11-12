@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExtraSchool</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+   
+    <div id="app">
+
+        <!--NavBAr-->
+        <header class="header">
+            <div class="container-header">
+
+                <div class="title-nav">
+                    <span class="icon-nav"><i class="fa-solid fa-graduation-cap"></i></span>
+                    <h1>ExtraSchool</h1>
+                </div>
+
+                <nav>
+                    <button class="btn">
+                        🛒 Cart 
+                    </button>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <h1>Lessons</h1>
+
+            <div class="lesson-card-container">
+
+                <div class="lesson-math">
+                    <h2>{{subjects.math.title}}</h2>
+                    <img :src="subjects.math.img" alt="" width="100px">
+                    <h2>{{subjects.math.location}}</h2>
+                    <h2>{{subjects.math.price}}</h2>
+                    <button class="btn">Add</button>
+                </div>
+            </div>
+        </main>
+
+    </div>
+
+
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="script/app.js"></script>
+</body>
+</html>
