@@ -10,7 +10,7 @@ createApp({
                 lesson: [
                     { id: 1, subject: "Math", location: "Hendon", price: "100£", availabilty : 5,img: "images/mathimg.png"},
                     { id: 2, subject: "English", location: "Wembley", price: "150£", availabilty : 5,img: "images/English.png"},
-                    { id: 3, subject: "Art", location: "Camden", price: "30£", availabilty : 5,img: "images/Art.png"}
+                    { id: 3, subject: "Art", location: "Camden", price: "30£", availabilty : 5,img: "images/Art.png"},
                 ],
             },
             cart: [],

@@ -47,38 +47,40 @@
                 </div>
             </div>
             <!--Checkout Page-->
-            <div v-else>
+            <div v-else class="checkout-container">
                 <h1>Checkout</h1>
                 <!--Checkout Form-->
-                <label for="firstName">First Name:</label>
-                <input id="firstName" v-model="order.firstName" required>
-                <br>
-                <label for="lastName">Last Name:</label>
-                <input id="lastName" v-model="order.lastName" required>
-                <br>
-                <label for="phone">Phone Number:</label>
-                <input id="phone" v-model="order.phone" required>
-                <br>
-                <!--Submit Button-->
-                <button class="btn" @click="showCheckoutMessage()" :disabled="!formIsValid">Submit Order</button>
-                <br>
-                <!-- Checkout Message -->
-                <div v-if="CheckoutMessage">
-                    <h2>Order Submitted Successfully!</h2>
+                <div class="checkout-form">
+                    <label for="firstName">First Name:</label>
+                    <input id="firstName" v-model="order.firstName" required>
+                    <br>
+                    <label for="lastName">Last Name:</label>
+                    <input id="lastName" v-model="order.lastName" required>
+                    <br>
+                    <label for="phone">Phone Number:</label>
+                    <input id="phone" v-model="order.phone" required>
+                    <br>
+                    <!--Submit Button-->
+                    <button class="btn" @click="showCheckoutMessage()" :disabled="!formIsValid">Submit Order</button>
+                    <br>
+                    <!-- Checkout Message -->
+                    <div v-if="CheckoutMessage">
+                        <h2>Order Submitted Successfully!</h2>
+                    </div>
+                    <!-- Cart Items -->
+                    <h2>Items in Cart: {{numberofItems}}</h2>
+                    <ul>
+                        <li v-for="item in cart" :key="item">
+                            <!--For each item in the cart print subject and price-->
+                            {{item.subject}} -
+                            {{item.price}} -
+                            {{item.location}}
+                            <!--Remove Button from cart-->
+                            <button class="btn" @click="removeFromCart(item.id)">Remove</button>
+                        </li>
+                    </ul>
+                    <button class="btn" @click="showProducts = true">Home Page</button>
                 </div>
-                <!-- Cart Items -->
-                <h2>Items in Cart: {{numberofItems}}</h2>
-                <ul>
-                    <li v-for="item in cart" :key="item">
-                        <!--For each item in the cart print subject and price-->
-                        {{item.subject}} -
-                        {{item.price}} -
-                        {{item.location}}
-                        <!--Remove Button from cart-->
-                        <button class="btn" @click="removeFromCart(item.id)">Remove</button>
-                    </li>
-                </ul>
-                <button class="btn" @click="showProducts = true">Home Page</button>
             </div>
 
         </main>
