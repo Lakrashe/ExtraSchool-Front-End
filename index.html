@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +8,9 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
+
 <body>
-   
+
     <div id="app">
 
         <!--NavBAr-->
@@ -22,25 +24,46 @@
 
                 <nav>
                     <button class="btn">
-                        🛒 Cart 
+                        🛒 Cart
                     </button>
                 </nav>
             </div>
         </header>
 
         <main>
-            <h1>Lessons</h1>
-
-            <div class="lesson-card-container">
-
-                <div class="lesson-math">
-                    <h2>{{subjects.math.title}}</h2>
-                    <img :src="subjects.math.img" alt="" width="100px">
-                    <h2>{{subjects.math.location}}</h2>
-                    <h2>{{subjects.math.price}}</h2>
-                    <button class="btn">Add</button>
+            <div v-if="showProducts">
+                <!--Product page-->
+                <h1>Lessons</h1>
+                <div class="lesson-card-container">
+                    <div v-for="lesson in subjects.lesson" :key="lesson.id" class="lesson-card">
+                        <h2>{{lesson.subject}}</h2>
+                        <img :src="lesson.img" alt="" width="200px" height="150px">
+                        <h2>{{lesson.location}}</h2>
+                        <h2>Availability: {{lesson.availabilty}}</h2>
+                        <h2>{{lesson.price}}</h2>
+                        <button class="btn" @click="addToCart(lesson.id)" :disabled="!canAddToCart(lesson)">Add to 🛒
+                            {{numberofItems}}</button>
+                    </div>
                 </div>
+                <!-- Checkout button -->
+                <button class="btn" @click="showCheckout()" :disabled="numberofItems === 0" >Checkout</button>
             </div>
+            <!--Checkout Page-->
+            <div v-else>
+                <h1>Checkout</h1>
+                <h2>Items in Cart: {{numberofItems}}</h2>
+                <ul>
+                    <li v-for="item in cart" :key="item">
+                        <!--For each item in the cart print subject and price-->
+                        {{item.subject}} - 
+                        {{item.price}} -
+                        {{item.location}}
+                    </li>
+                </ul>
+                <button class="btn" @click="showCheckout()" >Checkout</button>
+
+            </div>
+
         </main>
 
     </div>
@@ -50,4 +73,5 @@
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="script/app.js"></script>
 </body>
+
 </html>
