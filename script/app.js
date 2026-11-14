@@ -7,6 +7,7 @@ createApp({
             showProducts: true,
             CheckoutMessage: false,
             decreasing: false,
+            sortType: "price",
             subjects: {
                 lesson: [],
             },
