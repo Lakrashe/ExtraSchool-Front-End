@@ -31,9 +31,17 @@
         </header>
 
         <main>
-            <button class="btn" @click = "decreasing = !decreasing">Decrease / Increase</button>
+            <!--Btn toggle to show lessons in ascending or descending-->
+            <button class="btn" @click = "decreasing = !decreasing">Ascending / Descending</button>
+            <!--Form to let the user pick what type of sorting-->
+            <select v-model="sortType">
+                <option value="subject">Subject</option>
+                <option value="location">Location</option>
+                <option value="price">Price</option>
+                <option value="availabilty">Availability</option>
+            </select>
+            <!--Product page-->
             <div v-if="showProducts">
-                <!--Product page-->
                 <h1>Lessons</h1>
                 <div class="lesson-card-container">
                     <div v-for="lesson in sortedLessons"  class="lesson-card">

@@ -29,13 +29,20 @@ createApp({
             return this.order.firstName && this.order.lastName && this.order.phone;
         },
         sortedLessons: function () {
-            if (this.decreasing) {
-                return this.subjects.lesson.sort(function (a, b) { return b.price - a.price });
-            }
-            else {
-                return this.subjects.lesson.sort(function (a, b) { return a.price - b.price });
-            }
-        }
+            let type = this.sortType
+            //Create sorted variable so that we can reverse it 
+            let sorted = this.subjects.lesson.sort(function(a,b){
+                //if the type is not numeric
+                if (type === "subject" || type === "location") {
+                    return a[type].localeCompare(b[type]);
+                }
+                //for numeric type
+                else{
+                    return a[type] - b[type];
+                }});
+                //reverse so that if button increase dec clicked it reverse the sorted list
+                return this.decreasing ?  sorted : sorted.reverse();
+            },
     },
     created() {
         this.fetchData();
