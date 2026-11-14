@@ -6,11 +6,12 @@ createApp({
             // Define the initial state of the application
             showProducts: true,
             CheckoutMessage: false,
+            decreasing: false,
             subjects: {
-                lesson: [],  
+                lesson: [],
             },
             cart: [],
-            order:{
+            order: {
                 firstName: "",
                 lastName: "",
                 phone: "",
@@ -18,21 +19,29 @@ createApp({
         }
     },
 
-     computed: {
-        numberofItems : function(){
+    computed: {
+        numberofItems: function () {
             return this.cart.length;
         },
-        formIsValid: function() {
+        formIsValid: function () {
             // Check if all required fields are filled
             return this.order.firstName && this.order.lastName && this.order.phone;
+        },
+        sortedLessons: function () {
+            if (this.decreasing) {
+                return this.subjects.lesson.sort(function (a, b) { return b.price - a.price });
+            }
+            else {
+                return this.subjects.lesson.sort(function (a, b) { return a.price - b.price });
+            }
         }
     },
-    created(){
+    created() {
         this.fetchData();
     },
     methods: {
         //Async function that fetch data temporarly from my local host
-        async fetchData(){
+        async fetchData() {
             const url = "http://localhost:3000/";
             let response = await (fetch(url));
             this.subjects.lesson = await response.json();
@@ -42,7 +51,7 @@ createApp({
             const lesson = this.subjects.lesson.find(l => l.id === id);
             // Add the selected lesson to the cart with the matching id
             this.cart.push(lesson);
-            lesson.availabilty --;
+            lesson.availabilty--;
         },
         canAddToCart(lesson) {
             // Check if the lesson has availability greater than 0
