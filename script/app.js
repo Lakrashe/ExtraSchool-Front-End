@@ -7,11 +7,7 @@ createApp({
             showProducts: true,
             CheckoutMessage: false,
             subjects: {
-                lesson: [
-                    { id: 1, subject: "Math", location: "Hendon", price: "100£", availabilty : 5,img: "images/mathimg.png"},
-                    { id: 2, subject: "English", location: "Wembley", price: "150£", availabilty : 5,img: "images/English.png"},
-                    { id: 3, subject: "Art", location: "Camden", price: "30£", availabilty : 5,img: "images/Art.png"},
-                ],
+                lesson: [],  
             },
             cart: [],
             order:{
@@ -31,7 +27,16 @@ createApp({
             return this.order.firstName && this.order.lastName && this.order.phone;
         }
     },
+    created(){
+        this.fetchData();
+    },
     methods: {
+        //Async function that fetch data temporarly from my local host
+        async fetchData(){
+            const url = "http://localhost:3000/";
+            let response = await (fetch(url));
+            this.subjects.lesson = await response.json();
+        },
         addToCart(id) {
             // Find the lesson with the matching id in the subjects.lesson array
             const lesson = this.subjects.lesson.find(l => l.id === id);
