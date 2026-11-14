@@ -114,3 +114,32 @@ body{
     background: #f1f5f9;
     border-radius: 8px;
 }
+.container-sort{
+    display: flex;
+    align-items: end;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 700px;
+    margin: 30px auto;
+    padding: 20px;
+    background: white;
+    border: 1px solid black;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px;
+}
+.sort-field label {
+    font-size: large;
+    font-weight: 600;
+    color: #172b4d;
+    margin-right: 10px;
+
+}
+.sort-field select{
+    padding: 11px 35px;
+    border: 1px solid black;
+    border-radius: 8px;
+    background:whitel;
+    font-weight: 600;
+    font-size: large;
+}
