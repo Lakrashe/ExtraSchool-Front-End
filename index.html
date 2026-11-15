@@ -78,7 +78,7 @@
                     <input id="phone" v-model="order.phone" required>
                     <br>
                     <!--Submit Button-->
-                    <button class="btn" @click="showCheckoutMessage()" :disabled="!formIsValid">Submit Order</button>
+                    <button class="btn" @click="postOrder(); showCheckoutMessage() " :disabled="!formIsValid">Submit Order</button>
                     <br>
                     <!-- Checkout Message -->
                     <div v-if="CheckoutMessage">
@@ -87,7 +87,7 @@
                     <!-- Cart Items -->
                     <h2>Items in Cart: {{numberofItems}}</h2>
                     <ul>
-                        <li v-for="item in cart" :key="item">
+                        <li v-for="item in cart">
                             <!--For each item in the cart print subject and price-->
                             {{item.subject}} -
                             {{item.price}} -

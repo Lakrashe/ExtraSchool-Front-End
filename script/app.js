@@ -54,6 +54,22 @@ createApp({
             let response = await (fetch(url));
             this.subjects.lesson = await response.json();
         },
+        //Async function to post order in the server
+        async postOrder(){
+            const url = Base_Url + "/orders";
+            const options = {
+                method: "POST",
+                headers: {
+                    "Content-Type" : "application/json"
+                },
+                //Wrap order and cart in one object
+                body: JSON.stringify({
+                    order: this.order,
+                    cart: this.cart,
+                })
+            }
+            let response = await (fetch(url,options));
+        },
         //img address
         imageAdress(lesson){
             return Base_Url + "/" + lesson.img;
