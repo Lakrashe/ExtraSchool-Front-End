@@ -1,5 +1,5 @@
 const { createApp } = Vue;
-
+const Base_Url = "http://localhost:3000"
 createApp({
     data() {
         return {
@@ -50,9 +50,13 @@ createApp({
     methods: {
         //Async function that fetch data temporarly from my local host
         async fetchData() {
-            const url = "http://localhost:3000/";
+            const url = Base_Url + "/lesson";
             let response = await (fetch(url));
             this.subjects.lesson = await response.json();
+        },
+        //img address
+        imageAdress(lesson){
+            return Base_Url + "/" + lesson.img;
         },
         addToCart(id) {
             // Find the lesson with the matching id in the subjects.lesson array
