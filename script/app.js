@@ -65,7 +65,7 @@ createApp({
                 //Wrap order and cart in one object
                 body: JSON.stringify({
                     order: this.order,
-                    cart: this.cart,
+                    cart: this.cart.map(item => item.id),
                 })
             }
             let response = await (fetch(url,options));
