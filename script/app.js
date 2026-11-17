@@ -98,6 +98,11 @@ createApp({
             // Toggling the checkout message
             this.CheckoutMessage = this.CheckoutMessage ? false : true;
             this.cart = [];
+            this.showProducts = true;
+            //Clear the form 
+            this.order.firstName = "";
+            this.order.lastName = "";
+            phone = "";
         },
         removeFromCart(id) {
             // Find the index of the item in the cart with the matching id
