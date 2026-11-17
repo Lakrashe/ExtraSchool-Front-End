@@ -31,18 +31,19 @@ createApp({
         sortedLessons: function () {
             let type = this.sortType
             //Create sorted variable so that we can reverse it 
-            let sorted = this.subjects.lesson.sort(function(a,b){
+            let sorted = this.subjects.lesson.sort(function (a, b) {
                 //if the type is not numeric
                 if (type === "subject" || type === "location") {
                     return a[type].localeCompare(b[type]);
                 }
                 //for numeric type
-                else{
+                else {
                     return a[type] - b[type];
-                }});
-                //reverse so that if button increase dec clicked it reverse the sorted list
-                return this.decreasing ?  sorted : sorted.reverse();
-            },
+                }
+            });
+            //reverse so that if button increase dec clicked it reverse the sorted list
+            return this.decreasing ? sorted : sorted.reverse();
+        },
     },
     created() {
         this.fetchData();
@@ -55,23 +56,27 @@ createApp({
             this.subjects.lesson = await response.json();
         },
         //Async function to post order in the server
-        async postOrder(){
+        async postOrder() {
             const url = Base_Url + "/orders";
             const options = {
                 method: "POST",
                 headers: {
-                    "Content-Type" : "application/json"
+                    "Content-Type": "application/json"
                 },
                 //Wrap order and cart in one object
                 body: JSON.stringify({
                     order: this.order,
                     cart: this.cart.map(item => item.id),
                 })
+            };
+            let response = await (fetch(url, options));
+
+            for (let lesson of this.cart) {
+                await this.updateLesson(lesson);
             }
-            let response = await (fetch(url,options));
         },
         //img address
-        imageAdress(lesson){
+        imageAdress(lesson) {
             return Base_Url + "/" + lesson.img;
         },
         addToCart(id) {
@@ -106,6 +111,19 @@ createApp({
                 // Increase the availability back of the lesson by 1
                 lesson.availabilty++;
             }
-        }
+        },
+        //Update lesson
+        async updateLesson(lesson) {
+            const url = Base_Url + "/lesson/" + lesson._id;
+            const options = {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ availabilty: lesson.availabilty })
+            }
+            let response = await (fetch(url, options));
+        },
+
     }
 }).mount("#app")
