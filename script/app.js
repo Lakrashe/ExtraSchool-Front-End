@@ -74,6 +74,7 @@ createApp({
             for (let lesson of this.cart) {
                 await this.updateLesson(lesson);
             }
+            this.showCheckoutMessage();
         },
         //img address
         imageAdress(lesson) {
@@ -102,7 +103,7 @@ createApp({
             //Clear the form 
             this.order.firstName = "";
             this.order.lastName = "";
-            phone = "";
+            this.order.phone = "";
         },
         removeFromCart(id) {
             // Find the index of the item in the cart with the matching id
