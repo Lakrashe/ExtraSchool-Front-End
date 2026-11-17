@@ -78,7 +78,7 @@
                     <input id="phone" v-model="order.phone" required>
                     <br>
                     <!--Submit Button-->
-                    <button class="btn" @click="postOrder(); showCheckoutMessage() " :disabled="!formIsValid">Submit Order</button>
+                    <button class="btn" @click="postOrder()" :disabled="!formIsValid">Submit Order</button>
                     <br>
                     <!-- Checkout Message -->
                     <div v-if="CheckoutMessage">
