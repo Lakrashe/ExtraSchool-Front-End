@@ -80,10 +80,6 @@
                     <!--Submit Button-->
                     <button class="btn" @click="postOrder()" :disabled="!formIsValid">Submit Order</button>
                     <br>
-                    <!-- Checkout Message -->
-                    <div v-if="CheckoutMessage">
-                        <h2>Order Submitted Successfully!</h2>
-                    </div>
                     <!-- Cart Items -->
                     <h2>Items in Cart: {{numberofItems}}</h2>
                     <ul>
@@ -98,6 +94,10 @@
                     </ul>
                     <button class="btn" @click="showProducts = true">Home Page</button>
                 </div>
+            </div>
+            <!-- Checkout Message -->
+            <div v-if="CheckoutMessage">
+                <h2>Order Submitted Successfully!</h2>
             </div>
 
         </main>
