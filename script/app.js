@@ -26,7 +26,9 @@ createApp({
         },
         formIsValid: function () {
             // Check if all required fields are filled
-            return this.order.firstName && this.order.lastName && this.order.phone;
+            const checkNames = /^[A-za-z\s]+$/;
+            const checkNumber = /^[0-9]{10,11}$/;
+            return checkNames.test(this.order.firstName.trim()) && checkNames.test(this.order.lastName.trim()) && checkNumber.test(this.order.phone);
         },
         sortedLessons: function () {
             let type = this.sortType
