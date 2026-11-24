@@ -31,6 +31,10 @@
         </header>
 
         <main>
+            <!-- Checkout Message -->
+            <div v-if="CheckoutMessage">
+                <h2>Order Submitted Successfully!</h2>
+            </div>
             <!--Form to let the user pick what type of sorting-->
             <div class="container-sort" v-if="showProducts">
                 <div class="sort-field">
@@ -95,11 +99,6 @@
                     <button class="btn" @click="showProducts = true">Home Page</button>
                 </div>
             </div>
-            <!-- Checkout Message -->
-            <div v-if="CheckoutMessage">
-                <h2>Order Submitted Successfully!</h2>
-            </div>
-
         </main>
 
     </div>
